@@ -1,27 +1,32 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
 const dotenv = require("dotenv");
-const path = require("path");
+const Student = require("./models/Student.js");
+const { createStudent, displayStudents, deleteStudent, updateStudent } = require("./controllers/students.js");
 
-// Middleware setup
+dotenv.config(); 
+
+require('./config/database.js')
+
+// Middleware set
+
+const app = express();
 app.use(express.json());
 
-// Database connection
-mongoose.connect('mongodb://localhost:27017/mydatabase', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to the database');
-});
 
-// Routes setup
-app.use('/api/students', require('./routes/studentRoutes'));
-app.use('/api/departments', require('./routes/departmentRoutes'));
-app.use('/api/courses', require('./routes/courseRoutes'));
+// CREATE DATA
+app.post('/student', createStudent );
+
+//DISPLAY DATA
+app.get('/students', displayStudents )
+
+
+//UPDATE DATA
+app.put('/student/:name', updateStudent)
+
+//DELETE DATA
+
+app.delete('/student/:name', deleteStudent )
+
 
 // Start the server
 const port = 3000;
