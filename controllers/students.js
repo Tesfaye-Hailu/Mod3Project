@@ -12,11 +12,39 @@ const displayStudents = async (req, res) => {
     res.send(students)
     }
 
-const deleteStudent = async (req,res) => {
-    let studentByName = req.params.name
-    const deletedStudent = await Student.deleteOne({name:studentByName})
-    res.send(deletedStudent)
-}
+// const deleteStudent = async (req,res) => {
+//     let studentByName = req.params.name
+//     const deletedStudent = await Student.deleteOne({name:studentByName})
+//     res.send(deletedStudent)
+// }
+
+// const deleteStudent = async (req, res) => {
+//     const studentId = req.params.id; 
+  
+//     try {
+//       const deletedStudent = await Student.findOneAndDelete({ _id: studentId });
+//       res.send(deletedStudent);
+//     } catch (error) {
+//       console.error('Error deleting student:', error);
+//       res.status(500).send('Internal Server Error');
+//     }
+//   };
+  
+const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Types;
+
+const deleteStudent = async (req, res) => {
+  const studentId = req.params.id;
+
+  try {
+    const deletedStudent = await Student.findByIdAndDelete(ObjectId(studentId));
+    res.send(deletedStudent);
+  } catch (error) {
+    console.error('Error deleting student:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 
 const updateStudent = async (req,res) => {
     let studentByName = req.params.name
