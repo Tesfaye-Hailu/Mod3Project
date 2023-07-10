@@ -110,7 +110,8 @@ function StudentList() {
     console.log('Deleting student with ID:', id);
     try {
       const url = `http://localhost:4000/student/${id}`;
-      await axios.delete(url);
+      const response = await axios.delete(url);
+      console.log(response.data)
       fetchStudents();
     } catch (error) {
       console.error('Error deleting student:', error);
@@ -121,6 +122,8 @@ function StudentList() {
   const handleUpdate = (studentId) => {
     // Handle the update logic for the selected student
     console.log('Update student with ID:', studentId);
+
+    
   };
 
   return (
@@ -129,12 +132,12 @@ function StudentList() {
       <button onClick={handleDisplay}>Display</button>
       <ul>
         {displayedStudents.map((student) => (
-          <li key={student.id}>
+          <li key={student._id}>
             <p>Name: {student.name}</p>
             <p>Department: {student.department}</p>
             <p>Course: {student.course}</p>
-            <button onClick={() => handleUpdate(student.id)}>Update</button>
-            <button onClick={() => handleDelete(student.id)}>Delete</button>
+            <button onClick={() => handleUpdate(student._id)}>Update</button>
+            <button onClick={() => handleDelete(student._id)}>Delete</button>
           </li>
         ))}
       </ul>

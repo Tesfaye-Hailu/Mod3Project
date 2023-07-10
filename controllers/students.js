@@ -37,8 +37,8 @@ const deleteStudent = async (req, res) => {
   const studentId = req.params.id;
 
   try {
-    const deletedStudent = await Student.findByIdAndDelete(ObjectId(studentId));
-    res.send(deletedStudent);
+    const deletedStudent = await Student.findByIdAndDelete(studentId);
+    res.json(deletedStudent);
   } catch (error) {
     console.error('Error deleting student:', error);
     res.status(500).send('Internal Server Error');
