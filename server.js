@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use(cors())
 
+
 // CREATE DATA
 app.post('/student', createStudent );
 
@@ -23,7 +24,8 @@ app.get('/students', displayStudents )
 
 
 //UPDATE DATA
-app.put('/student/:name', updateStudent)
+//app.put('/student/:name', updateStudent)
+app.put('/student/:id', updateStudent);
 
 //DELETE DATA
 
