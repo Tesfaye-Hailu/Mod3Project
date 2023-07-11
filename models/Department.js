@@ -6,5 +6,5 @@ const departmentSchema = new mongoose.Schema({
 },
     {timestamps: true}
 );
-const Department = mongoose.model("course", departmentSchema)
+const Department = mongoose.model("department", departmentSchema)
 module.exports = Department;
