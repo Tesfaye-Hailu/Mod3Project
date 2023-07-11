@@ -9,9 +9,11 @@ export const categories = [
     {name: 'IT Support', sortOrder: 80},
     {name: 'Machine learning', sortOrder: 90},
     {name: 'Artificial Intelligence', sortOrder: 100}
-  ]
+]
   
-  export const items = [{name: 'Introduction to Data Science', category: categories[1].name},
+  export const items =
+  
+  [{name: 'Introduction to Data Science', category: categories[1].name},
   {name: 'Data Visualization', category: categories[1].name},
   {name: 'Statistical Analysis with Python', category: categories[1].name},
   {name: 'Machine Learning Algorithms', category: categories[1].name},
