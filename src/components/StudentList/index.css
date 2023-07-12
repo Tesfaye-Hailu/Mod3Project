@@ -1,15 +1,15 @@
-display-button {
-    background-color: green;
-    color: white;
-    margin-bottom: 10px;
-  }
-  
-  .button-container {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .delete-button {
-    background-color: green;
-    color: white;
-  }
+.display-button {
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}
+

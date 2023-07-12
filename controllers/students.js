@@ -1,16 +1,47 @@
 const Student = require("../models/Student");
 
-
 const createStudent = async (req, res) => {
-    //console.log(req.body);
-    let databaseResponse = await Student.create(req.body);
-    res.send(databaseResponse)
-}
+  try {
+    const { name, department, course } = req.body;
+
+    if (!course) {
+      return res.status(400).json({ error: 'Course is required' });
+    }
+
+    const student = new Student({
+      name,
+      department,
+      course,
+    });
+
+    const savedStudent = await student.save();
+    res.status(201).json(savedStudent);
+  } catch (error) {
+    console.error('Error creating student:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 const displayStudents = async (req, res) => {
-    let students = await Student.find ({})
-    res.send(students)
-    }
+  try {
+    let students = await Student.find({});
+    res.send(students);
+  } catch (error) {
+    console.error('Error displaying students:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// const createStudent = async (req, res) => {
+//     //console.log(req.body);
+//     let databaseResponse = await Student.create(req.body);
+//     res.send(databaseResponse)
+// }
+
+// const displayStudents = async (req, res) => {
+//     let students = await Student.find ({})
+//     res.send(students)
+//     }
 
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;
@@ -32,11 +63,10 @@ const updateStudent = async (req, res) => {
     const studentId = req.params.id;
     const updatedData = req.body;
 
-    const updatedStudent = await Student.findByIdAndUpdate(
-      studentId,
-      updatedData,
-      { new: true, runValidators: true }
-    );
+    const updatedStudent = await Student.findByIdAndUpdate(studentId, updatedData, {
+      new: true,
+      runValidators: true,
+    });
 
     if (!updatedStudent) {
       return res.status(404).send('Student not found');
@@ -48,8 +78,6 @@ const updateStudent = async (req, res) => {
     res.status(500).send('Error updating student');
   }
 };
-
-
 
 // const updateStudent = async (req,res) => {
 //     let studentByName = req.params.name

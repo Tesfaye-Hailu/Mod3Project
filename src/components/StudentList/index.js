@@ -486,13 +486,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StudentUpdate from '../StudentUpdate';
-import DepartmentList from '../DepartmentList';
-import './index.css'; // Import the CSS file for styling
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
-  const [displayedStudents, setDisplayedStudents] = useState([]);
-  const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
     fetchStudents();
@@ -507,34 +503,14 @@ const StudentList = () => {
     }
   };
 
-  const handleDisplay = () => {
-    setDisplayedStudents(students);
-  };
-
-  const handleUpdate = (studentId, updatedData) => {
-    setSelectedStudent({ id: studentId, data: updatedData });
-  };
-
-  const handleUpdateSubmit = async () => {
+  const handleUpdate = async (studentId, updatedData) => {
     try {
-      const url = `http://localhost:4000/student/${selectedStudent.id}`;
-      const response = await axios.put(url, selectedStudent.data);
-      console.log('Student updated successfully:', response.data);
-
-      setDisplayedStudents((prevStudents) =>
-        prevStudents.map((student) =>
-          student._id === selectedStudent.id ? { ...student, ...response.data } : student
-        )
-      );
-
-      setSelectedStudent(null);
+      const url = `http://localhost:4000/student/${studentId}`;
+      await axios.put(url, updatedData);
+      fetchStudents(); // Fetch updated student data after successful update
     } catch (error) {
       console.error('Error updating student:', error);
     }
-  };
-
-  const handleCancelUpdate = () => {
-    setSelectedStudent(null);
   };
 
   const handleDelete = async (id) => {
@@ -542,9 +518,7 @@ const StudentList = () => {
     try {
       const url = `http://localhost:4000/student/${id}`;
       await axios.delete(url);
-      setDisplayedStudents((prevStudents) =>
-        prevStudents.filter((student) => student._id !== id)
-      );
+      fetchStudents(); // Fetch updated student data after successful delete
     } catch (error) {
       console.error('Error deleting student:', error);
     }
@@ -553,31 +527,20 @@ const StudentList = () => {
   return (
     <div>
       <h2>Student List</h2>
-      <button className="display-button" onClick={handleDisplay}>Display</button>
       <ul>
-        {displayedStudents.map((student) => (
+        {students.map((student) => (
           <li key={student._id}>
             <p>Name: {student.name}</p>
-            {selectedStudent && selectedStudent.id === student._id ? (
-              <div>
-                <DepartmentList selectedDepartment={student.department} />
-                <button onClick={handleUpdateSubmit}>Save</button>
-                <button onClick={handleCancelUpdate}>Cancel</button>
-              </div>
-            ) : (
-              <div>
-                <p>Department: {student.department}</p>
-                <p>Course: {student.course}</p>
-                <div className="button-container">
-                  <StudentUpdate
-                    studentId={student._id}
-                    onUpdate={handleUpdate}
-                    currentData={{ name: student.name, department: student.department, course: student.course }}
-                  />
-                  <button className="delete-button" onClick={() => handleDelete(student._id)}>Delete</button>
-                </div>
-              </div>
-            )}
+            <p>Department: {student.department}</p>
+            <p>Course: {student.course}</p>
+            <div className="button-container">
+              <StudentUpdate
+                studentId={student._id}
+                onUpdate={handleUpdate}
+                currentData={{ name: student.name, department: student.department, course: student.course }}
+              />
+              <button className="delete-button" onClick={() => handleDelete(student._id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
@@ -586,3 +549,4 @@ const StudentList = () => {
 };
 
 export default StudentList;
+
