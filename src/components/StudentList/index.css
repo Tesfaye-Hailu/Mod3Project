@@ -1,15 +1,28 @@
-.display-button {
-  margin-bottom: 10px;
+.container {
+  margin-top: 20px;
+}
+
+.student-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-list li {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
 }
 
 .button-container {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
   margin-top: 10px;
 }
 
-.delete-button {
-  background-color: red;
-  color: white;
+.button-container .update-button,
+.button-container .delete-button {
+  flex: 1;
+  margin-right: 10px;
 }
-

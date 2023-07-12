@@ -40,29 +40,36 @@ const StudentList = () => {
     }
   };
 
-  return (
-    <div>
-      <h2>Student List</h2>
-      <ul>
-        {students.map((student) => (
-          <li key={student._id}>
-            <p>Name: {student.name}</p>
-            <p>Department: {student.department}</p>
-            <p>Course: {student.course}</p>
-            <div className="button-container">
+return (
+  <div className="container">
+    <h2>Student List</h2>
+    <ul className="list-group">
+      {students.map((student) => (
+        <li key={student._id} className="list-group-item">
+          <p>Name: {student.name}</p>
+          <p>Department: {student.department}</p>
+          <p>Course: {student.course}</p>
+          <div className="button-container d-flex justify-content-between">
+            <div>
               <StudentUpdate
                 studentId={student._id}
                 onUpdate={handleUpdate}
-                currentData={{ name: student.name, department: student.department, course: student.course }}
+                currentData={{
+                  name: student.name,
+                  department: student.department,
+                  course: student.course
+                }}
               />
-              <button className="delete-button" onClick={() => handleDelete(student._id)}>Delete</button>
             </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+            <div>
+              <button className="btn btn-danger delete-button" onClick={() => handleDelete(student._id)}>Delete</button>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+}
 
 export default StudentList;
-

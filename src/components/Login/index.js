@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import './index.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -33,27 +34,34 @@ const Login = () => {
   // Render the login form or a logged-in message based on the login state
   return (
     <div>
-      {isLoggedIn ? (
-        <div>
-          <h2>Welcome, {username}!</h2>
-          <p>You are now logged in.</p>
+      <div className="container">
+        {isLoggedIn ? (
+          <div>
+            <h2>Welcome, {username}!</h2>
+            <p>You have successfully logged in.</p>
+          </div>
+        ) : (
+          <div>
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="username" className="form-label">Username:</label>
+                <input type="text" id="username" className="form-control" value={username} onChange={handleUsernameChange} />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">Password:</label>
+                <input type="password" id="password" className="form-control" value={password} onChange={handlePasswordChange} />
+              </div>
+              <button type="submit" className="btn btn-primary">Login</button>
+            </form>
+          </div>
+        )}
+      </div>
+      <div className="scroll-message-container">
+        <div className="scroll-message">
+          WELCOME TO MY TESFAYE TECH BOOTCAMP 
         </div>
-      ) : (
-        <div>
-          <h2>Login</h2>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="username">Username:</label>
-              <input type="text" id="username" value={username} onChange={handleUsernameChange} />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input type="password" id="password" value={password} onChange={handlePasswordChange} />
-            </div>
-            <button type="submit">Login</button>
-          </form>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

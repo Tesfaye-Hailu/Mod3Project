@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './index.css';
+
 
 function StudentRegistration() {
   const initialStudentData = {
@@ -76,26 +78,29 @@ function StudentRegistration() {
     setCourses([]);
   };
 
+
   return (
-    <div>
+    <div className="container">
       <h2>Student Registration</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
             type="text"
             id="name"
             name="name"
+            className="form-control"
             value={studentData.name}
             onChange={handleInputChange}
             placeholder="Please enter the name of the student"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="department">Department:</label>
           <select
             id="department"
             name="department"
+            className="form-control"
             value={selectedDepartment}
             onChange={handleDepartmentChange}
           >
@@ -108,11 +113,12 @@ function StudentRegistration() {
           </select>
         </div>
         {selectedDepartment && (
-          <div>
+          <div className="form-group">
             <label htmlFor="course">Course:</label>
             <select
               id="course"
               name="course"
+              className="form-control"
               value={studentData.course}
               onChange={handleInputChange}
             >
@@ -125,16 +131,15 @@ function StudentRegistration() {
             </select>
           </div>
         )}
-        <button type="submit">Register</button>
+        <button type="submit" className="btn btn-primary btn-register">Register</button>
       </form>
       <div>
         <h3>Registered Students:</h3>
         {registeredStudents.map((student, index) => (
-          <div key={index}>
+          <div key={index} className="registered-student">
             <p>Name: {student.name}</p>
             <p>Department: {student.department}</p>
             <p>Course: {student.course}</p>
-            <hr />
           </div>
         ))}
       </div>
@@ -143,5 +148,4 @@ function StudentRegistration() {
 }
 
 export default StudentRegistration;
-
 

@@ -1,0 +1,26 @@
+.scroll-message-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9999;
+  }
+  
+  /* Styles for the scrolling message */
+  .scroll-message {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollMessage 20s linear infinite;
+  }
+  
+  /* Animation keyframes for scrolling message */
+  @keyframes scrollMessage {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

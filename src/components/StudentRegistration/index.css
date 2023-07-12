@@ -1,0 +1,21 @@
+.container {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .btn-register {
+    background-color: #007bff;
+    color: 
+  }
+  
+  .registered-student {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }

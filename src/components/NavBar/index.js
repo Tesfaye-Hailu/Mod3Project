@@ -1,61 +1,36 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css';
+import 'bootswatch/dist/lux/bootstrap.min.css';
 
 function NavBar() {
   return (
-    <nav className="navbar">
-      <ul className="navbar-list">
-      <li className="navbar-item">
-          <Link to="/login">Login</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/student-registration">Student Registration</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/student-list">Student List</Link>
-        </li>
-      </ul>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">Login</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/" className="nav-link">Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/student-registration" className="nav-link">Student Registration</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/student-list" className="nav-link">Student List</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/reports" className="nav-link">Reports</Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
 
 export default NavBar;
-
-
-// import { Navbar, Container, Nav } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-// import './index.css';
-
-// const HeaderMenu = () => {
-//     return (
-//         <div className='header-menu'>
-//             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-//                 <Container>
-                    
-//                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//                     <Navbar.Collapse id="responsive-navbar-nav">
-//                         <Nav className="me-auto">
-                         
-//                             <Nav.Link href="/">
-//                                 <Link to="/">Home</Link>   
-//                             </Nav.Link> 
-//                             <Nav.Link href="/studentregistration">
-//                                 <Link to="/student-registration">Student Registration</Link>
-//                             </Nav.Link>
-                            
-//                             <Nav.Link href="/studentlist">
-//                                 <Link to="/student-list">Student List</Link>
-//                             </Nav.Link>
-//                         </Nav>
-//                     </Navbar.Collapse>
-//                 </Container>
-//             </Navbar>
-//         </div>
-//     );
-// }
-
-// export default HeaderMenu;
