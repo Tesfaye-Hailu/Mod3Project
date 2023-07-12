@@ -79,6 +79,7 @@ function StudentRegistration() {
   };
 
 
+
   return (
     <div className="container">
       <h2>Student Registration</h2>
@@ -148,4 +149,3 @@ function StudentRegistration() {
 }
 
 export default StudentRegistration;
-
