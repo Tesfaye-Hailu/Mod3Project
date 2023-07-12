@@ -5,10 +5,12 @@ import Home from './components/Home';
 import StudentRegistration from './components/StudentRegistration';
 import StudentList from './components/StudentList';
 
+
 function App() {
   return (
     <Router>
       <NavBar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/student-registration" element={<StudentRegistration />} />
