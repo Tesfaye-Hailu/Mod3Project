@@ -4,6 +4,7 @@ const cors = require("cors");
 const Student = require("./models/Student.js");
 const Department = require("./models/Department.js");
 const Course = require("./models/Course.js");
+const path = require('path');
 
 const { createStudent, displayStudents, deleteStudent, updateStudent } = require("./controllers/students.js");
 const displayDepartments  = require("./controllers/departments.js");
