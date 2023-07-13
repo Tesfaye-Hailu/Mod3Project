@@ -12,7 +12,7 @@ function HomePage() {
   return (
     <div className="container-fluid">
       <div className="jumbotron text-center">
-        <h1 className="display-4">Welcome to My Tesfaye Tech BootCamp</h1>
+        <h1 className="display-4">Welcome to Tesfaye Tech BootCamp</h1>
         <p className="lead"> Tesfaye BootCamp is an online learning platform that offers a wide range of courses to help you enhance your skills and achieve your goals.</p>
         <a href="#features" className="btn btn-primary btn-lg" onClick={handleLearnMoreClick}>Learn More</a>
       </div>

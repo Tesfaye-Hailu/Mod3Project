@@ -59,7 +59,7 @@ const Login = () => {
       </div>
       <div className="scroll-message-container">
         <div className="scroll-message">
-          WELCOME TO MY TESFAYE TECH BOOTCAMP 
+          WELCOME TO TESFAYE TECH BOOTCAMP 
         </div>
       </div>
     </div>
